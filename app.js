@@ -1,13 +1,21 @@
 const express = require("express");
 const path = require("path");
-
-const PORT = process.env.PORT || 7000;
-
 var app = express();
 
-app.use(express.static(path.join(__dirname, "public")));
+const { Pool } = require("pg");
+
+const connectionString = process.env.DATABASE_URL || "postgres://todo_user:remember@localhost:5432/todo";
+const pool = new Pool({connectionString: connectionString});
+
+app.set("port", (process.env.PORT || 7000));
+
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get("/getNote", getNote)
+
+app.listen(app.get("port"), function() {
+    console.log("Now listening for: ", app.get("port"));
+});
 
 function getNote(req, res) {
     console.log("Retrieving Note"); //error here? note listed below?
@@ -44,8 +52,3 @@ function getNoteFromDb(id, callback) {
         callback(null, result.rows)
     })
 }
-
-app.listen(PORT, function() {
-    console.log("Server is found on " + PORT);
-});
-
