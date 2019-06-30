@@ -1,0 +1,15 @@
+{
+  "name": "cs313-p2",
+  "version": "1.0.0",
+  "description": "Project 2 - To-Do List",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Wilkins",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
