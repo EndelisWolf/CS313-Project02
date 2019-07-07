@@ -22,28 +22,32 @@
     <script src="index.js"></script>
 </head>
 
-<body class="generalBG">
+<body class="generalBG" onload="locatetodo()">
     <div class="jumbotron text-center">
         <h1 class="display-4">Daily School Todo List</h1>
         <h4>Choose a task from the list provided:</h4>
         <br />
-        <select id="inquiry">
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
+        <div id="locate"></div>
         <br />
         <br />
         <input type="submit" value="Find Note" class="btn btn-outline-info" onclick="noteCall()">
+        <p>NOTE: Everything beyond Find Note is part of Milestone 2. As such the user interface as minor differences.</p><br /> <!--delete everything on this line later -->
+        <input type="submit" value="Delete Note" class="btn btn-outline-danger" onclick="deleteNote()">
+        <br />
+        <input type="submit" value="Update Note" class="btn btn-outline-primary" onclick="updateNoteRequest()">
         <br />
         <div id="remind"></div>
-        <!-- <label>Complete By:</label><br />
-            <input type="date" name="duedate" id="duedate">
-            <br />
-            <br />
-            <label>What needs to be done?</label><br />
-            <input type="text" name="noteentry" id="noteentry"><br />
-            <input type="submit" value="Add Note"><br /> -->
+        <br />
+        <div id="allowChange"></div>
+        <br />
+        <br />
+        <label>Complete By:</label><br />
+        <input type="date" name="duedate" id="duedate">
+        <br />
+        <br />
+        <label>What needs to be done?</label><br />
+        <input type="text" name="noteentry" id="noteentry"><br />
+        <input type="submit" value="Add Note" class="btn btn-outline-success" onclick="addNote()"><br />
 
     </div>
 </body>
