@@ -25,7 +25,7 @@ function locatetodo() {
 
         html += "<select id='inquiry'>"
         for (var i = 0; i < data.length; i++) {
-            html += "<option id=" + data[i].id + ">" + data[i].id + "</option>"
+            html += "<option value=" + data[i].id + ">" + data[i].duedate.split('T')[0] + "</option>"
         }
         html += "</select>"
 
@@ -45,16 +45,18 @@ function updateNoteRequest() {
     let change = " ";
     
     change += "<h5>Change notes content:<br /></h5>";
-    change += '<input type="text" name="noteentry" id="noteentry"><br /><br />'
+    change += '<input type="text" name="noteChange" id="noteChange"><br /><br />'
     change += "<input type='submit' value='Complete Update' class='btn btn-outline-success' onclick='updateNote()'>";
 
-    document.getElementById("allowChange").innerHTML = change;    
+    document.getElementById("allowChange").innerHTML = change; 
+    document.getElementById("poof").style.display = "none";   
 }
 
 function updateNote() {
-    $.post('/updateNote', {noteentry:document.getElementById("noteentry").value}, function (data, status) {
+    $.post('/updateNote', {id:document.getElementById("inquiry").value, noteentry:document.getElementById("noteChange").value}, function (data, status) {
         data[i].id
     })
+    alert("Your note has been updated")
     location.reload();
 }
 

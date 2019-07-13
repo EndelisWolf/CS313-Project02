@@ -76,7 +76,7 @@ function getNoteFromDb(id, callback) {
 }
 
 function locatetodo(req, res) {
-    var sql = "SELECT id FROM list";
+    var sql = "SELECT id, duedate FROM list ORDER BY duedate";
     pool.query(sql, function (err, data) {
         res.json(data.rows)
     })
@@ -131,13 +131,13 @@ function deleteNoteFromDb(id, callback) {
 function updateNote(req, res) {
     console.log("Retrieving note that needs updating.")
 
-    
-    var id = req.query.id;
+    console.log(req.body)
+    var id = req.body.id;
     //var sql = "INSERT INTO list (duedate, noteentry) VALUES ($1, $2)"
 
     console.log("Note #", id, "is being updated.")
 
-    updateNoteFromDb(id, function(error, result) {
+    updateNoteFromDb(id, req.body.noteentry, function(error, result) {
         console.log("Retrieved from DB Note to be updated:", result)
         if (error || result == null) {
             res.status(500).json({
@@ -145,7 +145,7 @@ function updateNote(req, res) {
                 data: error
             })
         } else {
-            res.json(result[0]);
+            res.json({});
         }
     })
 
@@ -155,12 +155,10 @@ function updateNote(req, res) {
     //})
 }
 
-function updateNoteFromDb(id, req, callback) {
+function updateNoteFromDb(id, noteentry, callback) {
     console.log("Note called with id:", id);
 
-    var noteentry = req.body.noteentry;
-
-    var sql = "UPDATE list SET noteentry='noteentry' where id = $1::int";
+    var sql = "UPDATE list SET noteentry=$2 where id = $1::int";
     var params = [id, noteentry];
 
     pool.query(sql, params, function (err, result) {
