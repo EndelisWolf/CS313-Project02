@@ -33,20 +33,14 @@
         <input type="submit" value="Find Note" class="btn btn-outline-info" onclick="noteCall()">
         <input type="submit" value="Delete Note" class="btn btn-outline-danger" onclick="deleteNote()">
         <br />
-        <input type="submit" id="poof" value="Update Note" class="btn btn-outline-primary" onclick="updateNoteRequest()">
+        <input type="submit" id="poof" value="Update Note" class="btn btn-outline-warning"
+            onclick="updateNoteRequest()">
+        <input type="submit" id="poof2" value="New Note" class="btn btn-outline-primary" onclick="addNoteRequest()">
         <br />
         <div id="remind"></div>
         <br />
         <div id="allowChange"></div>
-        <br />
-        <br />
-        <label>Complete By:</label><br />
-        <input type="date" name="duedate" id="duedate">
-        <br />
-        <br />
-        <label>What needs to be done?</label><br />
-        <input type="text" name="noteentry" id="noteentry"><br />
-        <input type="submit" value="Add Note" class="btn btn-outline-success" onclick="addNote()"><br />
+        <div id="addEntry"></div>
 
     </div>
 </body>

@@ -137,7 +137,7 @@ function updateNote(req, res) {
 
     console.log("Note #", id, "is being updated.")
 
-    updateNoteFromDb(id, req.body.noteentry, function(error, result) {
+    updateNoteFromDb(id, req.body.noteentry, function (error, result) {
         console.log("Retrieved from DB Note to be updated:", result)
         if (error || result == null) {
             res.status(500).json({
@@ -150,8 +150,8 @@ function updateNote(req, res) {
     })
 
     //pool.query(sql, [duedate, noteentry], function (err, done) {
-        //done();
-        //res.redirect('/');
+    //done();
+    //res.redirect('/');
     //})
 }
 
